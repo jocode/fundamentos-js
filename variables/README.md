@@ -128,3 +128,24 @@ Existen cinco tipos de datos que son primitivos:
 - Undefined
 - Number
 - String
+
+Cuando asignamos un objeto creado, a una variable; éste apuntará a la **_misma dirección en memoria_** y, los datos que **cambien en uno**, se verán **reflejado en el otro**.
+
+```js
+var persona = {
+  nombre: 'Johan'
+}
+
+var copia = persona;
+```
+
+## Diferencias entre `var` `let` y `const`
+
+**var** | **let** | **const**
+--------|---------|----------
+Declara una variable de scope global o local para la función sin importar el ámbito de bloque. Permite hoisting.|Declara una variable de scope global, local para la función o de bloque. Es reasignable y no permite hoisting.|Declara una variable de scope global, local para la función o de bloque. No es reasignable, pero es mutable. No permite hoisting.
+
+**Hoisting** Es una característica en JS que consiste en , con independencia de donde esté la declaración de una variable, ésta es movida al inicio del ámbito al que pertenece.
+
+- [Var, let y const. ¿Donde, cuando y por qué?](https://medium.com/@tatymolys/var-let-y-const-donde-cuando-y-por-qu%C3%A9-d4a0ee66883b)
+- [Diferencias clave entre var, let y const en JavaScript](https://cybmeta.com/var-let-y-const-en-javascript)
