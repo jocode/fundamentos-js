@@ -17,7 +17,7 @@ Todos los navegadores tienen un intérprete de javascript. Es el único lenguaje
 - En Javascript las variables son de tipado dinámico
 - En Javascript es opcional escribir el punto y coma **";"**
 
-![](https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.purelogics.net%2Fblog%2Fwp-content%2Fuploads%2F2019%2F01%2Fjavascript.png&f=1&nofb=1https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.purelogics.net%2Fblog%2Fwp-content%2Fuploads%2F2019%2F01%2Fjavascript.png&f=1&nofb=1)
+![Javascript](https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.purelogics.net%2Fblog%2Fwp-content%2Fuploads%2F2019%2F01%2Fjavascript.png&f=1&nofb=1)
 
 
 ## Historia de JavaScript
