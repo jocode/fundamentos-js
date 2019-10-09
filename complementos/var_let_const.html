@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Var vs Let vs Const</title>
+</head>
+<body>
+  <script>
+    var johan = {
+      nombre: 'Johan',
+      apellido: 'Mosquera',
+      edad: 15
+    }
+
+    function esMayorDeEdad(persona){
+      let mensaje
+      const MAYORIA_DE_EDAD = 18;
+      if (persona.edad > MAYORIA_DE_EDAD){
+        mensaje = 'Es mayor de edad';
+      } else {
+        mensaje = "Es menor de edad";
+      }
+      console.log(mensaje);
+    }  
+
+    // esMayorDeEdad(johan);
+
+    for (var i = 0; i < 10; i++){
+      console.log(i)
+    }
+    console.log(`Terminó el for, El valor de i es ${i}`);
+
+  </script>
+</body>
+</html>

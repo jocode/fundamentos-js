@@ -30,7 +30,7 @@ class Juego {
   }
 
   toggleBtnEmpezar() {
-    if(btnEmpezar.classList.contains('hide')) {
+    if (btnEmpezar.classList.contains('hide')) {
       btnEmpezar.classList.remove('hide')
     } else {
       btnEmpezar.classList.add('hide')
@@ -41,19 +41,20 @@ class Juego {
     Generamos un array de números aleatorios
     Con fill llenamos de ceros el array
   */
-  generarSecuencia(){
+  generarSecuencia() {
     this.secuencia = new Array(this.ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random() * 4));
   }
 
-  siguienteNivel(){
-    this.subnivel = 0;
-    this.puntuacion.points.innerText = `Aciertos: ${this.aciertos}`;
+  siguienteNivel() {
+    this.subnivel = 0
+    this.puntuacion.level.innerText = `Nivel: ${this.nivel}`
+    this.puntuacion.points.innerText = `Aciertos: ${this.aciertos}`
     this.iluminarSecuencia()
     this.agregarEventosClick()
   }
 
-  trasnformarNumeroAcolor(num){
-    switch (num){
+  trasnformarNumeroAcolor(num) {
+    switch (num) {
       case 0:
         return 'celeste'
       case 1:
@@ -65,8 +66,8 @@ class Juego {
     }
   }
 
-  trasnformarColorANumero(color){
-    switch (color){
+  trasnformarColorANumero(color) {
+    switch (color) {
       case 'celeste':
         return 0;
       case 'violeta':
@@ -78,9 +79,9 @@ class Juego {
     }
   }
 
-  reproducirSonido(num){
+  reproducirSonido(num) {
     var src;
-    switch (num){
+    switch (num) {
       case 0:
         src = 'media/do.mp3';
         break;
@@ -96,31 +97,31 @@ class Juego {
     }
     console.log('Reproduce');
     var snd = new Audio(src);
-    snd.play(); 
+    snd.play();
   }
 
-  iluminarSecuencia(){
-    for (let i = 0; i < this.nivel; i++){
+  iluminarSecuencia() {
+    for (let i = 0; i < this.nivel; i++) {
       const color = this.trasnformarNumeroAcolor(this.secuencia[i]);
 
-      setTimeout(()=>{
+      setTimeout(() => {
         this.iluminarColor(color)
         this.reproducirSonido(this.secuencia[i]);
-      }, 1000*i)
+      }, 1000 * i)
     }
   }
 
-  iluminarColor(color){
+  iluminarColor(color) {
     this.colores[color].classList.add
-    ('light');
-    setTimeout(()=> this.apagarColor(color), 350);
+      ('light');
+    setTimeout(() => this.apagarColor(color), 350);
   }
 
-  apagarColor(color){
+  apagarColor(color) {
     this.colores[color].classList.remove('light');
   }
 
-  agregarEventosClick(){
+  agregarEventosClick() {
     // Para no perder la referencia a this
     var self = this;
     this.colores.celeste.addEventListener('click', this.elegirColor);
@@ -129,7 +130,7 @@ class Juego {
     this.colores.naranja.addEventListener('click', this.elegirColor);
   }
 
-  eliminarEventosClick(){
+  eliminarEventosClick() {
     // Para no perder la referencia a this
     var self = this;
     this.colores.celeste.removeEventListener('click', this.elegirColor);
@@ -138,7 +139,7 @@ class Juego {
     this.colores.naranja.removeEventListener('click', this.elegirColor);
   }
 
-  elegirColor(e){
+  elegirColor(e) {
     const nombreColor = e.target.dataset.color;
     const numeroColor = this.trasnformarColorANumero(nombreColor)
     this.iluminarColor(nombreColor)
@@ -147,41 +148,41 @@ class Juego {
     // Si el usuario selecciona bien la secuencia
     if (numeroColor === this.secuencia[this.subnivel]) {
       this.subnivel++
-      this.aciertos ++;
+      this.aciertos++;
       this.puntuacion.points.innerText = `Aciertos: ${this.aciertos}`;
 
       // El usuario pasa de nivel
-      if (this.subnivel === this.nivel){
+      if (this.subnivel === this.nivel) {
         this.nivel++
         this.puntuacion.level.innerText = `Nivel: ${this.nivel}`;
         this.eliminarEventosClick()
 
-        if (this.nivel === (this.ULTIMO_NIVEL+1) ){
+        if (this.nivel === (this.ULTIMO_NIVEL + 1)) {
           // Ganó
           this.ganoElJuego();
         } else {
           // Avanzar de nivel
-          setTimeout( this.siguienteNivel, 1500)
+          setTimeout(this.siguienteNivel, 1500)
         }
       }
 
-    }  else {
+    } else {
       // Perdió
       this.perdioElJuego();
     }
   }
 
-  ganoElJuego(){
+  ganoElJuego() {
     swal('¡Super Memoria!', 'Felicitaciones, ganaste el juego!', 'success')
-    .then(this.inicializar)
+      .then(this.inicializar)
   }
 
-  perdioElJuego(){
+  perdioElJuego() {
     swal('Afina tu Memoria', 'Oush, sigue practicando :(', 'error')
-    .then(() => {
-      this.eliminarEventosClick();
-      this.inicializar();
-    })
+      .then(() => {
+        this.eliminarEventosClick();
+        this.inicializar();
+      })
     this.aciertos = 0
     this.nivel = 1
     this.puntuacion.level.innerText = `Nivel: ${this.nivel}`;

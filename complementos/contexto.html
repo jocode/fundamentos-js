@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contexto</title>
+</head>
+<body>
+  <script>
+  
+    const johan = {
+      nombre: 'Johan',
+      apellido: 'Mosquera'
+    }
+
+    function saludar(saludo = 'Hola'){
+      console.log(`${saludo}, mi nombre es ${this.nombre}`)
+    }
+
+    // const saludarAJohan = saludar.bind(johan)
+
+    // .bind() devuelve una nueva funcion y no ejecuta función
+    setTimeout(saludar.bind(johan, 'Buenas, buenas '), 1000)
+
+    // .call() y .apply() ejecutan la función en ese momento
+    saludar.call(johan, 'Hola che')
+    saludar.apply(johan, ['Primer parámetro como array'])
+
+  </script>
+</body>
+</html>

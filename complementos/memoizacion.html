@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Memoización</title>
+</head>
+<body>
+  <script>
+    /*
+      6! = 6*5*4*3*2*1 = 720
+      12! = 12*11*10*9*6*6!
+    */
+
+    function factorial(n){
+
+      // Guardar en la cache
+      if (!this.cache){
+        this.cache = {}
+      }
+
+      debugger
+      if (this.cache[n]){
+        return this.cache[n]
+      }
+
+      if (n === 1){
+        return 1
+      }
+      this.cache[n] = n*factorial(n-1)
+      debugger
+      return this.cache[n]
+      // 6 * factorial(5)
+    }
+
+    console.log(factorial(6))
+  </script>
+</body>
+</html>
