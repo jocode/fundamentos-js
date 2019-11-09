@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: cadetblue;
+  background: darkslategray;
   display: flex;
   align-items: center;
   height: 100vh;
@@ -110,4 +110,55 @@ body {
 
 .hide {
   display: none;
+}
+
+/* Hasta un ancho máximo de 768px  (iPad)*/
+@media screen and (max-width: 768px){
+
+  .gameboard {
+    height: 100vw;
+    width: 100vw;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    max-height: 90vw;
+    max-width: 90vw;
+  }
+
+  .score {
+    position: absolute;
+    width: 80vw;
+    height: 3.5em;
+    left: 0;
+    top: 80vh;
+    margin: 0 auto;
+    margin-top: 1em;
+    text-align: center;
+  }
+
+  .score p {
+    font-size: 1.2em;
+    font-weight: bold;;
+    margin: 0;
+  }
+  
+  .score label {
+    display: block;
+    letter-spacing: 2px;
+    font-size: 1e m;
+    text-align: left;
+    margin: 0;
+  }
+
+  .btn-start {
+    width: 94vw;
+    height: 100px;
+    background: #ecf0f1;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 3vw;
+  }
+
 }
