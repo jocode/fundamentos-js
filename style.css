@@ -101,12 +101,19 @@ body {
   text-align: center;
 }
 
+.score p {
+  font-style: italic;
+  font-weight: bold;
+  margin: 0;
+}
+
 .score label {
   display: block;
   font-size: 1.2rem;
   margin: 5px;
   text-align: left;
 }
+
 
 .hide {
   display: none;
@@ -129,36 +136,38 @@ body {
     position: absolute;
     width: 80vw;
     height: 3.5em;
+    font-size: 15px;
     left: 0;
     top: 80vh;
     margin: 0 auto;
-    margin-top: 1em;
+    margin-top: 2em;
     text-align: center;
   }
 
   .score p {
     font-size: 1.2em;
-    font-weight: bold;;
+    font-weight: bold;
+    font-style: italic;
     margin: 0;
   }
   
   .score label {
     display: block;
     letter-spacing: 2px;
-    font-size: 1e m;
+    font-size: 1em;
     text-align: left;
     margin: 0;
   }
 
   .btn-start {
-    width: 94vw;
+    width: 90vw;
     height: 100px;
     background: #ecf0f1;
     color: #2c3e50;
     font-size: 2.5rem;
     position: absolute;
     top: calc(50% - 50px);
-    left: 3vw;
+    left: 5vw;
   }
 
 }

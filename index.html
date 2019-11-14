@@ -1,59 +1,64 @@
 <!--Juego de Memorizacipon-->
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Afina tu Memoria</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div id="score" class="score">
-      <p>Puntuación</p>
-      <label>Nivel: 1</label>
-      <label>Aciertos: 0</label>
-    </div>
-    <div class="gameboard">
-      <div id="celeste" class="color celeste left" data-color="celeste"></div>
-      <div id="violeta" class="color violeta right" data-color="violeta"></div>
-      <div id="naranja" class="color naranja left" data-color="naranja"></div>
-      <div id="verde" class="color verde right" data-color="verde"></div>
-      <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
-    </div>
 
-    <div id="start" class="start hide">
-        <span class="count-down" id="countDown">5</span>
-    </div>
-    
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="juego.js"></script>
-    <script>
-      const celeste = document.getElementById('celeste')
-      const violeta = document.getElementById('violeta')
-      const naranja = document.getElementById('naranja')
-      const verde = document.getElementById('verde')
-      const btnEmpezar = document.getElementById('btnEmpezar')
-      const start = document.getElementById('start')
-      const score = document.getElementById('score')
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Afina tu Memoria</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="score" class="score">
+    <p>Puntuación</p>
+    <label>Nivel: 1</label>
+    <label>Aciertos: 0</label>
+  </div>
+  <div class="gameboard">
+    <div id="celeste" class="color celeste left" data-color="celeste"></div>
+    <div id="violeta" class="color violeta right" data-color="violeta"></div>
+    <div id="naranja" class="color naranja left" data-color="naranja"></div>
+    <div id="verde" class="color verde right" data-color="verde"></div>
+    <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
+  </div>
+
+  <div id="start" class="start hide">
+    <span class="count-down" id="countDown">5</span>
+  </div>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="juego.js"></script>
+  <script>
+    const celeste = document.getElementById('celeste')
+    const violeta = document.getElementById('violeta')
+    const naranja = document.getElementById('naranja')
+    const verde = document.getElementById('verde')
+    const btnEmpezar = document.getElementById('btnEmpezar')
+    const start = document.getElementById('start')
+    const score = document.getElementById('score')
 
 
-      function empezarJuego() {
+    function empezarJuego() {
+      start.classList.toggle('hide')
+      sleep(3);
+    }
+
+    function sleep(seconds) {
+      if (seconds < 0) {
         start.classList.toggle('hide')
-        sleep(3);     
+        window.juego = new Juego()
+        return;
       }
 
-      function sleep(seconds){
-        if (seconds < 0){
-          start.classList.toggle('hide')
-          window.juego = new Juego()
-          return;
-        }
+      start.children.item(0).textContent = seconds;
 
-        start.children.item(0).textContent = seconds;
+      setTimeout(() => {
+        sleep(seconds - 1);
+      }, 1000);
+    }
+  </script>
+</body>
 
-        setTimeout(()=>{
-          sleep(seconds-1);
-        }, 1000);
-      }
-    </script>
-  </body>
 </html>
